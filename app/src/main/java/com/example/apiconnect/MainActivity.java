@@ -58,6 +58,21 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+
+        fav.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(name.getText().equals("")){
+                    Toast.makeText(MainActivity.this, "Rellena dar like", Toast.LENGTH_SHORT).show();
+                }else{
+                    try {
+                        POSTCall();
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        });
     }
 
     protected void APICall(String input){
@@ -86,30 +101,30 @@ public class MainActivity extends AppCompatActivity {
         queue.add(stringRequest);
     }
 
-    protected void POSTCall(){
-        /*RequestQueue queue = Volley.newRequestQueue(this);
-        String url = "https://pokeapi.co/api/v2/pokemon/"+input.toLowerCase();
+    protected void POSTCall() throws JSONException {
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        String URL = "https://jsonplaceholder.typicode.com/posts";
+        JSONObject jsonBody = new JSONObject();
+        jsonBody.put("id", 1);
+        jsonBody.put("title", name.getText().toString());
+        jsonBody.put("body", "Liked!");
+        final String requestBody = jsonBody.toString();
 
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        try {
-                            JSONObject jObj = new JSONObject(response);
-                            name.setText(jObj.get("name").toString());
-                            myIV.setImageBitmap(getBitmapFromURL(jObj.getJSONObject("sprites").get("front_default").toString()));
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
-                    }
-                }, new Response.ErrorListener() {
+        StringRequest request = new StringRequest(Request.Method.POST, URL, new com.android.volley.Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                Toast.makeText(MainActivity.this, "Liked!", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(MainActivity.this, response, Toast.LENGTH_SHORT).show();
+            }
+        }, new com.android.volley.Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-
+                // method to handle errors.
+                Toast.makeText(MainActivity.this, "Fail to get response = " + error, Toast.LENGTH_SHORT).show();
             }
         });
 
-        queue.add(stringRequest);*/
+        requestQueue.add(request);
     }
 
     public static Bitmap getBitmapFromURL(String src) {
