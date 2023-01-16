@@ -4,22 +4,36 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/black"
-    tools:context=".MainActivity" >
+    android:background="@drawable/bg"
+    tools:context=".MainActivity">
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="213dp"
-        android:layout_height="65dp"
+        android:layout_width="249dp"
+        android:layout_height="95dp"
+        android:fontFamily="@font/font_pokemonmain"
         android:text="PokeAPI"
         android:textAlignment="center"
-        android:textColor="@color/white"
-        android:textSize="48sp"
+        android:textColor="@android:color/system_accent3_200"
+        android:textSize="60sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.12" />
+        app:layout_constraintVertical_bias="0.048" />
+
+    <ImageView
+        android:id="@+id/marco"
+        android:layout_width="237dp"
+        android:layout_height="242dp"
+        android:background="@color/material_dynamic_neutral50"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.354"
+        tools:srcCompat="@color/material_dynamic_neutral50" />
 
     <ImageView
         android:id="@+id/image"
@@ -37,6 +51,7 @@
         android:id="@+id/nameTF"
         android:layout_width="198dp"
         android:layout_height="39dp"
+        android:fontFamily="@font/pokedex_fond"
         android:textAlignment="center"
         android:textColor="@color/white"
         android:textSize="24sp"
@@ -76,8 +91,9 @@
         style="@style/Widget.AppCompat.EditText"
         android:layout_width="211dp"
         android:layout_height="48dp"
-        android:background="@color/material_dynamic_neutral10"
+        android:background="@color/trans_black"
         android:ems="10"
+        android:fontFamily="@font/pokedex_fond"
         android:inputType="textPersonName"
         android:text="Name"
         android:textColor="@color/white"
